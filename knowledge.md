@@ -38,7 +38,7 @@ All reads/writes go through `lib/store.ts` (`readStore` / `writeStore`).
 - `data/activity.json` — journal entries `{ id, actor, category, summary, link, createdAt }`, capped at 400. `lib/activity.ts` (`logActivity` is best-effort).
 - `data/notifications.json` — `{ id, category, text, link, read, createdAt }`, capped at 120. `lib/notifications.ts`: `notify` (best-effort), `unreadCount`, `markNotificationRead`, `markAllRead`. Raised on new reservation, new message and password change; `GET/POST /api/admin/notifications` serves the bell.
 - `data/admin.json` — `{ name, email, passwordHash }`; `passwordHash: null` means the env/default password is used.
-- Seeded content in `reservations.json` was demo data (`id` prefixed `demo-`), now only in local files; the production database was started empty.
+- Seeded content in `reservations.json` was demo data (`id` prefixed `demo-`); demo rows and messages seeded from local files are still in the production database. The two test messages and two notifications created during deployment checks were removed straight from the database via Neon's HTTP SQL endpoint (reachable with `curl` from this machine, unlike Node's `fetch`).
 
 ## Back-office (modelled on `../royal_beach_mboko`)
 - Shell: `components/admin/AdminFrame.tsx` (fixed sidebar + mobile drawer), `AdminNav.tsx` (active route, badges, menu sub-menu), sticky topbar with `NotificationBell` (30 s polling, unread count, mark-as-read) and avatar. No “view site” link in the panel topbar.
@@ -61,12 +61,14 @@ All reads/writes go through `lib/store.ts` (`readStore` / `writeStore`).
 - Deployment is Vercel, project **`restaurantmbangui`** (team `jehubins-projects`), site at `https://restaurantmbangui.vercel.app`. `metadataBase` matches. The old project `restaurant_m` (alias `restaurantm-rouge.vercel.app`) is disconnected from Git and kept only as an archive.
 - SSO deployment protection was disabled on the project (`vercel project protection disable --sso restaurantmbangui`), otherwise every URL answers a 302 to Vercel SSO.
 - Deploy with `vercel --prod --yes --archive=tgz`: plain uploads fail intermittently with `Error: fetch failed` on this machine.
+- A project created with `vercel project add` gets **Framework Preset: Other**, which makes Vercel serve the folder as static files and 404 every route (`x-vercel-error: NOT_FOUND`). Fix with `vercel project update <name> --framework nextjs`.
 
 ## Gotchas
 - `getLocale()` uses `cookies()`, so public pages render dynamically. Do not add `generateStaticParams` to news pages.
 - `/carte` is `force-dynamic` so back-office menu edits show immediately; news actions call `revalidatePath`.
 - `.env.local` holds `DATABASE_URL` (plus a Vercel OIDC token written by `vercel link`) and is gitignored; do not commit or print it.
 - `news.json` lives in `data/` but is committed on purpose, it is the seed for the production database.
+- `lib/news.ts` used to write `data/news.json` directly, which silently lost back-office edits on Vercel; it now goes through `readStore`/`writeStore` like every other store. Grep for `fs.writeFile` before assuming a value persists.
 - `lib/menu.ts` must keep the `MENU` export: it seeds `data/menu.json` when the file is missing.
 - Fonts: `--font-marck` / `--font-jost` from `next/font`; CSS aliases to `--font-script` / `--font-sans`. Do not reuse alias names in font config.
 - `.ornament` glyph masks its line with `--ornament-bg`; use `.ornament-dark` on dark backgrounds.

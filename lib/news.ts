@@ -1,7 +1,6 @@
 import "server-only";
 
-import { promises as fs } from "node:fs";
-import path from "node:path";
+import { readStore, writeStore } from "./store";
 
 export type NewsPost = {
   slug: string;
@@ -15,7 +14,7 @@ export type NewsPost = {
   body: string[];
 };
 
-const NEWS_FILE = path.join(process.cwd(), "data", "news.json");
+const NEWS_FILE = "news.json";
 
 function formatDate(iso: string) {
   return new Intl.DateTimeFormat("fr-FR", {
@@ -30,21 +29,15 @@ function withDisplayDate(post: Omit<NewsPost, "displayDate">): NewsPost {
 }
 
 export async function readNewsRaw(): Promise<Omit<NewsPost, "displayDate">[]> {
-  try {
-    const raw = await fs.readFile(NEWS_FILE, "utf8");
-    const parsed: unknown = JSON.parse(raw);
-    return Array.isArray(parsed) ? (parsed as Omit<NewsPost, "displayDate">[]) : [];
-  } catch {
-    return [];
-  }
+  const rows = await readStore<Omit<NewsPost, "displayDate">[]>(NEWS_FILE, []);
+  return Array.isArray(rows) ? rows : [];
 }
 
 export async function writeNewsRaw(
   posts: Omit<NewsPost, "displayDate">[],
 ): Promise<void> {
-  await fs.mkdir(path.dirname(NEWS_FILE), { recursive: true });
   const sorted = [...posts].sort((a, b) => (a.date < b.date ? 1 : -1));
-  await fs.writeFile(NEWS_FILE, `${JSON.stringify(sorted, null, 2)}\n`, "utf8");
+  await writeStore(NEWS_FILE, sorted);
 }
 
 export async function getNews(): Promise<NewsPost[]> {
