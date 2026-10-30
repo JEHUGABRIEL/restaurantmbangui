@@ -1,8 +1,8 @@
+import Image from "next/image";
 import { getLocale } from "@/lib/locale";
 import { getUi } from "@/lib/i18n";
 import { MAPS_URL } from "@/lib/site";
 import { Pin } from "./icons";
-import Image from "next/image";
 
 /** Plan du quartier : image servie par le site, sans dépendance à un service tiers. */
 export default async function SiteMap() {
@@ -17,18 +17,20 @@ export default async function SiteMap() {
         fill
         sizes="100vw"
       />
-      <span className="map-pin" aria-hidden>
-        <Pin width={18} height={18} />
-      </span>
       <a
-        className="map-open"
+        className="map-hit"
         href={MAPS_URL}
         target="_blank"
         rel="noopener noreferrer"
-      >
+        aria-label={label}
+      />
+      <span className="map-pin" aria-hidden>
+        <Pin width={18} height={18} />
+      </span>
+      <span className="map-open" aria-hidden>
         <Pin width={13} height={13} />
         {label}
-      </a>
+      </span>
       <span className="map-credit">
         ©{" "}
         <a

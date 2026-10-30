@@ -595,11 +595,17 @@
   pointer-events: none;
 }
 
+.map-hit {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
 .map-pin {
   position: absolute;
   top: 50%;
   left: 50%;
-  z-index: 2;
+  z-index: 3;
   display: grid;
   width: 46px;
   height: 46px;
@@ -637,7 +643,7 @@
   position: absolute;
   bottom: 22px;
   left: 24px;
-  z-index: 2;
+  z-index: 3;
   display: inline-flex;
   align-items: center;
   gap: 9px;
@@ -654,7 +660,7 @@
     border-color 0.25s ease;
 }
 
-.map-open:hover {
+.map-static:hover .map-open {
   border-color: var(--gold);
   background: var(--gold);
   color: #120e0b;
@@ -664,7 +670,7 @@
   position: absolute;
   right: 14px;
   bottom: 10px;
-  z-index: 2;
+  z-index: 4;
   color: rgba(23, 18, 14, 0.58);
   font-size: 8px;
   letter-spacing: 0.06em;

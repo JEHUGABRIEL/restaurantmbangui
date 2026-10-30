@@ -22,8 +22,8 @@ export default function LocaleSwitch({ locale }: { locale: Locale }) {
         onChange={(event) => change(event.target.value)}
         aria-label="Langue / Language"
       >
-        <option value="fr">Français</option>
-        <option value="en">English</option>
+        <option value="fr">FR</option>
+        <option value="en">EN</option>
       </select>
       <ChevronDown width={10} height={10} aria-hidden />
     </span>

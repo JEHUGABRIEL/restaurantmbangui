@@ -30,7 +30,6 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
     { href: "/carte", label: t.nav.carte },
     { href: "/menu-rose", label: t.nav.rose },
     { href: "/actualites", label: t.nav.news },
-    { href: "/#avis", label: t.nav.reviews },
     { href: "/contact", label: t.nav.contact },
   ];
 
@@ -77,9 +76,7 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
         <nav className="main-nav" aria-label="Navigation principale">
           {links.map((link) => {
             const active =
-              link.href.startsWith("/") && link.href !== "/#avis"
-                ? pathname === link.href || pathname.startsWith(`${link.href}/`)
-                : false;
+              pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
               <Link
                 key={link.href}
@@ -169,9 +166,7 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
         <nav aria-label="Navigation mobile">
           {links.map((link) => {
             const active =
-              link.href.startsWith("/") && link.href !== "/#avis"
-                ? pathname === link.href || pathname.startsWith(`${link.href}/`)
-                : false;
+              pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
               <Link
                 key={link.href}
