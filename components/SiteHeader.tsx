@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { FACEBOOK_URL, PHONE_DISPLAY, RESERVE_URL, whatsapp } from "@/lib/site";
+import { FACEBOOK_URL, PHONE_TEL, RESERVE_URL, whatsapp } from "@/lib/site";
 import { getUi, type Locale } from "@/lib/i18n";
 import { useCart } from "@/lib/cart";
 import LocaleSwitch from "./LocaleSwitch";
@@ -13,6 +13,7 @@ import {
   Close,
   Facebook,
   MenuIcon,
+  Phone,
   WhatsApp,
 } from "./icons";
 
@@ -148,16 +149,56 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
       </div>
 
       <div className="mobile-menu" id="mobile-menu" hidden={!open}>
+        <div className="mobile-menu__top">
+          <span className="mobile-menu__brand">
+            <span className="mobile-menu__mark" aria-hidden>
+              M’
+            </span>
+            Restaurant M’
+          </span>
+          <button
+            type="button"
+            className="mobile-close"
+            onClick={() => setOpen(false)}
+            aria-label={t.common.close}
+          >
+            <Close width={18} height={18} />
+          </button>
+        </div>
+
         <nav aria-label="Navigation mobile">
-          {links.map((link) => (
-            <Link key={link.href} href={link.href}>
-              {link.label}
-            </Link>
-          ))}
+          {links.map((link) => {
+            const active =
+              link.href.startsWith("/") && link.href !== "/#avis"
+                ? pathname === link.href || pathname.startsWith(`${link.href}/`)
+                : false;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={active ? "is-active" : undefined}
+                aria-current={active ? "page" : undefined}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
-        <div className="mobile-menu-foot">
-          <LocaleSwitch locale={locale} />
-          <a href="tel:+23672053434">{PHONE_DISPLAY}</a>
+
+        <div className="mobile-menu__foot">
+          <a className="mobile-call" href={`tel:${PHONE_TEL}`}>
+            <Phone width={15} height={15} />
+            {t.common.call}
+          </a>
+          <a
+            className="btn btn-gold mobile-book"
+            href={RESERVE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t.common.bookTable}
+            <ArrowUpRight width={14} height={14} />
+          </a>
           <button
             type="button"
             className="mobile-cart"
@@ -166,17 +207,12 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
               openCart();
             }}
           >
+            <CartIcon width={14} height={14} />
             {t.cart.title} ({count})
           </button>
-          <a
-            className="btn btn-gold"
-            href={RESERVE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {t.common.bookTable}
-            <ArrowUpRight width={14} height={14} />
-          </a>
+          <div className="mobile-menu__lang">
+            <LocaleSwitch locale={locale} />
+          </div>
         </div>
       </div>
     </header>

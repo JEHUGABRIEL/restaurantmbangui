@@ -1,3 +1,4 @@
+import "./site.css";
 import CartDrawer from "@/components/CartDrawer";
 import PublicMotion from "@/components/PublicMotion";
 import SiteFooter from "@/components/SiteFooter";

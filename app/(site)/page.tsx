@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import HeroSlideshow from "@/components/HeroSlideshow";
+import SiteMap from "@/components/SiteMap";
 import NewsCard from "@/components/NewsCard";
 import ReviewCarousel from "@/components/ReviewCarousel";
 import StoryCarousel from "@/components/StoryCarousel";
@@ -25,9 +26,6 @@ import {
   RESERVE_URL,
   whatsapp,
 } from "@/lib/site";
-
-const MAP_EMBED =
-  "https://www.openstreetmap.org/export/embed.html?bbox=18.545%2C4.355%2C18.595%2C4.390&layer=mapnik&marker=4.372%2C18.560";
 
 const copy = {
   fr: {
@@ -290,12 +288,7 @@ export default async function Home() {
       </section>
 
       <section className="map-section" id="contact">
-        <iframe
-          className="map-frame"
-          title="Carte — Restaurant M’, Bangui"
-          src={MAP_EMBED}
-          loading="lazy"
-        />
+        <SiteMap />
         <div className="container map-overlay">
           <div className="contact-card">
             <span className="script script-light">Contact</span>

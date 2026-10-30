@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import MessageForm from "@/components/MessageForm";
 import PageHero from "@/components/PageHero";
 import ReservationForm from "@/components/ReservationForm";
+import SiteMap from "@/components/SiteMap";
 import { getLocale } from "@/lib/locale";
 import {
   ADDRESS,
@@ -241,12 +242,7 @@ export default async function ContactPage({
       </section>
 
       <section className="map-section map-section-page">
-        <iframe
-          className="map-frame"
-          title="Carte — Restaurant M’, Bangui"
-          src="https://www.openstreetmap.org/export/embed.html?bbox=18.545%2C4.355%2C18.595%2C4.390&layer=mapnik&marker=4.372%2C18.560"
-          loading="lazy"
-        />
+        <SiteMap />
         <div className="container map-overlay">
           <div className="contact-card">
             <span className="script script-light">Contact</span>

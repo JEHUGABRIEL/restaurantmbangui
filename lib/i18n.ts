@@ -22,6 +22,8 @@ export const ui = {
       close: "Fermer",
       language: "Langue",
       home: "Accueil",
+      call: "Nous appeler",
+      openMap: "Ouvrir dans Google Maps",
     },
     cart: {
       open: "Ouvrir le panier",
@@ -62,6 +64,13 @@ export const ui = {
       location: "Restaurant M’ · Bangui, République centrafricaine",
       built: "Site réalisé pour la maison · 2026",
       bookings: "Réservations",
+      tagline:
+        "Cuisine centrafricaine, terrasse ombragée et bar, au cœur de Bangui.",
+      explore: "La maison",
+      visit: "Nous rendre visite",
+      hoursTitle: "Horaires",
+      note: "Service continu. Dernière commande 30 min avant la fermeture.",
+      rights: "Tous droits réservés.",
     },
   },
   en: {
@@ -82,6 +91,8 @@ export const ui = {
       close: "Close",
       language: "Language",
       home: "Home",
+      call: "Call us",
+      openMap: "Open in Google Maps",
     },
     cart: {
       open: "Open the basket",
@@ -122,6 +133,13 @@ export const ui = {
       location: "Restaurant M’ · Bangui, Central African Republic",
       built: "Made for the house · 2026",
       bookings: "Bookings",
+      tagline:
+        "Central African cooking, a shaded terrace and a bar in the heart of Bangui.",
+      explore: "The house",
+      visit: "Come and see us",
+      hoursTitle: "Opening hours",
+      note: "Served all day. Last order 30 minutes before closing.",
+      rights: "All rights reserved.",
     },
   },
 } as const;

@@ -55,8 +55,8 @@ export default async function PanelLayout({
           as="button"
           icon="logout"
           label="Déconnexion"
-          title="Se déconnecter ?"
-          message="Vous devrez saisir à nouveau votre e-mail et votre mot de passe pour accéder au back-office."
+          title="Quitter le back-office ?"
+          message="Votre session va se fermer et vous reviendrez à l’écran de connexion. Vos modifications enregistrées sont conservées."
           confirmLabel="Se déconnecter"
         />
       </div>
