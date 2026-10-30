@@ -109,7 +109,10 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
           <span>
             © {year} Restaurant M’. {t.footer.rights}
           </span>
-          <span>{t.footer.built}</span>
+          <nav className="footer-legal" aria-label={t.footer.legal}>
+            <Link href="/mentions-legales">{t.footer.legalNotice}</Link>
+            <Link href="/confidentialite">{t.footer.privacy}</Link>
+          </nav>
         </div>
       </div>
     </footer>
