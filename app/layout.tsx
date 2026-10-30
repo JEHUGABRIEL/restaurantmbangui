@@ -18,7 +18,7 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://restaurantlembangui.com"),
+  metadataBase: new URL("https://restaurantmbangui.vercel.app"),
   title: {
     default: "Restaurant M’ — Restaurant & bar à Bangui",
     template: "%s · Restaurant M’ — Bangui",

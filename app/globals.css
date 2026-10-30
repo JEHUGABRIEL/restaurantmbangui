@@ -2845,3 +2845,215 @@ h4 {
     padding-top: 40px;
   }
 }
+
+/* ---------- Animations et transitions du site public ---------- */
+@keyframes public-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes public-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+/* Fondu à chaque changement de page */
+main.is-entering {
+  animation: public-fade 0.5s ease both;
+}
+
+/* Révélation au défilement (activée seulement si le JS est disponible) */
+.js-reveal .reveal-ready {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.16, 0.72, 0.28, 1);
+}
+
+.js-reveal .reveal-ready.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Accueil : entrée du titre, zoom lent des images */
+.hero-inner,
+.hero-notch,
+.hero-scroll {
+  animation: public-fade 1s ease both;
+}
+
+.hero-title span {
+  animation: public-rise 1.1s cubic-bezier(0.16, 0.72, 0.28, 1) both;
+}
+
+.hero-title span:nth-child(2) {
+  animation-delay: 0.14s;
+}
+
+.hero-dots {
+  animation: public-fade 1s ease 0.4s both;
+}
+
+.hero-slide {
+  transform: scale(1.05);
+  transition:
+    opacity 1.5s ease,
+    transform 8s linear;
+}
+
+.hero-slide.is-active {
+  transform: scale(1);
+}
+
+/* Bandeaux des pages intérieures */
+.page-hero-inner > * {
+  animation: public-rise 0.9s cubic-bezier(0.16, 0.72, 0.28, 1) both;
+}
+
+.page-hero-inner > :nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.page-hero-inner > :nth-child(3) {
+  animation-delay: 0.18s;
+}
+
+.page-hero-inner > :nth-child(4) {
+  animation-delay: 0.24s;
+}
+
+.page-hero-inner > :nth-child(5) {
+  animation-delay: 0.3s;
+}
+
+/* En-tête : hauteur et ombre au défilement */
+.site-header {
+  transition:
+    background-color 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.header-row {
+  transition: height 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.site-header.is-solid.is-scrolled {
+  box-shadow: 0 14px 34px rgba(10, 7, 5, 0.26);
+}
+
+.site-header.is-solid.is-scrolled .header-row {
+  height: 68px;
+}
+
+/* Menu mobile */
+.mobile-menu {
+  animation: public-fade 0.3s ease both;
+}
+
+.mobile-menu nav a {
+  animation: public-rise 0.45s cubic-bezier(0.16, 0.72, 0.28, 1) both;
+}
+
+.mobile-menu nav a:nth-child(2) {
+  animation-delay: 0.04s;
+}
+
+.mobile-menu nav a:nth-child(3) {
+  animation-delay: 0.08s;
+}
+
+.mobile-menu nav a:nth-child(4) {
+  animation-delay: 0.12s;
+}
+
+.mobile-menu nav a:nth-child(5) {
+  animation-delay: 0.16s;
+}
+
+.mobile-menu nav a:nth-child(6) {
+  animation-delay: 0.2s;
+}
+
+/* Liens, boutons, cartes et images */
+.gold-link svg {
+  transition: transform 0.3s ease;
+}
+
+.gold-link:hover svg {
+  transform: translate(3px, -3px);
+}
+
+.btn {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.news-card {
+  transition:
+    transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.45s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 44px rgba(23, 18, 14, 0.12);
+}
+
+.news-card-media img {
+  transition: transform 1.1s cubic-bezier(0.16, 0.72, 0.28, 1);
+}
+
+.menu-line {
+  transition:
+    background-color 0.3s ease,
+    padding-left 0.3s ease;
+}
+
+.menu-line:hover {
+  padding-left: 6px;
+  background: rgba(168, 127, 63, 0.05);
+}
+
+.carousel-slide img,
+.portrait img,
+.photo-row img {
+  transition: transform 1.2s cubic-bezier(0.16, 0.72, 0.28, 1);
+}
+
+.carousel-slide:hover img,
+.portrait:hover img,
+.photo-row figure:hover img {
+  transform: scale(1.04);
+}
+
+.cart-scrim {
+  animation: cart-fade 0.3s ease both;
+}
+
+.cart-drawer {
+  animation: cart-slide 0.42s cubic-bezier(0.16, 0.72, 0.28, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal .reveal-ready {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-slide,
+  .hero-slide.is-active {
+    transform: none;
+  }
+}

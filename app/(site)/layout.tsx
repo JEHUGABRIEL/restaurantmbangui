@@ -1,4 +1,5 @@
 import CartDrawer from "@/components/CartDrawer";
+import PublicMotion from "@/components/PublicMotion";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import { CartProvider } from "@/lib/cart";
@@ -18,6 +19,7 @@ export default async function SiteLayout({
       <main id="contenu">{children}</main>
       <SiteFooter locale={locale} />
       <CartDrawer />
+      <PublicMotion />
     </CartProvider>
   );
 }

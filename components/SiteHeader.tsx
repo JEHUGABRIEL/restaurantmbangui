@@ -19,6 +19,7 @@ import {
 export default function SiteHeader({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const isHome = pathname === "/";
   const { count, openCart } = useCart();
   const t = getUi(locale);
@@ -37,6 +38,13 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
   }, [pathname]);
 
   useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") setOpen(false);
     };
@@ -53,7 +61,9 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
 
   return (
     <header
-      className={isHome ? "site-header is-overlay" : "site-header is-solid"}
+      className={`site-header ${isHome ? "is-overlay" : "is-solid"}${
+        scrolled ? " is-scrolled" : ""
+      }`}
     >
       <div className="container header-row">
         <Link className="logo" href="/" aria-label="Restaurant M’">

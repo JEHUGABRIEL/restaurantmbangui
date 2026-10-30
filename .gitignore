@@ -19,3 +19,5 @@ next-env.d.ts
 data/*
 !data/menu.json
 !data/news.json
+.vercel
+.env*
