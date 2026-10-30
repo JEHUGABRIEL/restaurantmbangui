@@ -1,0 +1,304 @@
+import type { Locale } from "./i18n";
+
+export type Localized = { fr: string; en: string };
+
+export type Dish = {
+  id: string;
+  name: Localized;
+  description?: Localized;
+  price: number;
+  tag?: Localized;
+  /** `false` : plat masqué de la carte publique depuis le back-office. */
+  available?: boolean;
+};
+
+export type MenuSection = {
+  id: string;
+  title: Localized;
+  subtitle: Localized;
+  dishes: Dish[];
+};
+
+export function l10n(value: Localized, locale: Locale) {
+  return value[locale];
+}
+
+export function formatMoney(value: number) {
+  return value.toLocaleString("fr-FR");
+}
+
+/** Carte d'origine : sert à créer `data/menu.json` au premier lancement du back-office. */
+export const MENU: MenuSection[] = [
+  {
+    id: "entrees",
+    title: { fr: "Entrées", en: "Starters" },
+    subtitle: {
+      fr: "Pour ouvrir la table, frais et relevé.",
+      en: "Fresh, bright plates to open the meal.",
+    },
+    dishes: [
+      {
+        id: "salade-lentilles",
+        name: {
+          fr: "Salade tiède de lentilles",
+          en: "Warm lentil salad",
+        },
+        description: {
+          fr: "Fromage frais aux herbes, noix torréfiées, vinaigrette citronnée.",
+          en: "Herb cream cheese, toasted walnuts, lemon dressing.",
+        },
+        price: 4500,
+        tag: { fr: "Menu Rose", en: "Pink Menu" },
+      },
+      {
+        id: "avocat-crevettes",
+        name: { fr: "Avocat aux crevettes", en: "Avocado & prawns" },
+        description: {
+          fr: "Citron vert, coriandre, huile d’olive.",
+          en: "Lime, coriander, olive oil.",
+        },
+        price: 5500,
+      },
+      {
+        id: "beignets-plantain",
+        name: { fr: "Beignets de plantain", en: "Plantain fritters" },
+        description: {
+          fr: "Sauce piment doux maison.",
+          en: "House mild chilli sauce.",
+        },
+        price: 3500,
+      },
+      {
+        id: "veloute-courge",
+        name: { fr: "Velouté de courge", en: "Squash velouté" },
+        description: {
+          fr: "Huile de sésame, graines torréfiées.",
+          en: "Sesame oil, toasted seeds.",
+        },
+        price: 4000,
+      },
+    ],
+  },
+  {
+    id: "plats",
+    title: { fr: "Plats & grillades", en: "Mains & grills" },
+    subtitle: {
+      fr: "Le feu de bois, les sauces longues, les garnitures généreuses.",
+      en: "Wood fire, slow sauces, generous sides.",
+    },
+    dishes: [
+      {
+        id: "rognons-veau",
+        name: {
+          fr: "Rognons de veau à la moutarde",
+          en: "Veal kidneys in mustard sauce",
+        },
+        description: {
+          fr: "Moutarde à l’ancienne, pommes de terre sautées à l’ail, haricots verts.",
+          en: "Wholegrain mustard, garlic potatoes, green beans.",
+        },
+        price: 8500,
+        tag: { fr: "Menu Rose", en: "Pink Menu" },
+      },
+      {
+        id: "pave-boeuf",
+        name: { fr: "Pavé de bœuf, frites maison", en: "Beef steak, house fries" },
+        description: {
+          fr: "Beurre maître d’hôtel, salade croquante.",
+          en: "Herb butter, crisp salad.",
+        },
+        price: 9500,
+      },
+      {
+        id: "travers-porc",
+        name: { fr: "Travers de porc laqués", en: "Glazed pork ribs" },
+        description: {
+          fr: "Sauce barbecue, crudités, pickles maison.",
+          en: "Barbecue sauce, raw vegetables, house pickles.",
+        },
+        price: 8000,
+      },
+      {
+        id: "poulet-braise",
+        name: { fr: "Poulet braisé au gingembre", en: "Ginger braised chicken" },
+        description: {
+          fr: "Riz parfumé, sauce arachide.",
+          en: "Fragrant rice, peanut sauce.",
+        },
+        price: 7500,
+      },
+      {
+        id: "capitaine-grille",
+        name: { fr: "Capitaine grillé", en: "Grilled capitaine fish" },
+        description: {
+          fr: "Légumes de saison, beurre citronné.",
+          en: "Seasonal vegetables, lemon butter.",
+        },
+        price: 9000,
+      },
+      {
+        id: "saumon-snacke",
+        name: { fr: "Saumon snacké", en: "Seared salmon" },
+        description: {
+          fr: "Légumes croquants, citron vert.",
+          en: "Crisp vegetables, lime.",
+        },
+        price: 10500,
+      },
+    ],
+  },
+  {
+    id: "pizzas",
+    title: { fr: "Pizzas", en: "Pizzas" },
+    subtitle: {
+      fr: "Pâte pétrie sur place, cuisson à la commande.",
+      en: "Dough made in-house, baked to order.",
+    },
+    dishes: [
+      {
+        id: "margherita",
+        name: { fr: "Margherita", en: "Margherita" },
+        description: {
+          fr: "Tomate, mozzarella, basilic.",
+          en: "Tomato, mozzarella, basil.",
+        },
+        price: 6000,
+      },
+      {
+        id: "reine",
+        name: { fr: "Reine", en: "Ham & mushroom" },
+        description: {
+          fr: "Jambon, champignons, mozzarella.",
+          en: "Ham, mushrooms, mozzarella.",
+        },
+        price: 7000,
+      },
+      {
+        id: "poulet-fume",
+        name: { fr: "Poulet fumé & piment doux", en: "Smoked chicken & mild chilli" },
+        description: {
+          fr: "Poulet fumé, poivrons, oignons rouges.",
+          en: "Smoked chicken, peppers, red onions.",
+        },
+        price: 7500,
+      },
+      {
+        id: "vegetarienne",
+        name: { fr: "Végétarienne", en: "Vegetarian" },
+        description: {
+          fr: "Légumes de saison, mozzarella, herbes.",
+          en: "Seasonal vegetables, mozzarella, herbs.",
+        },
+        price: 6500,
+      },
+    ],
+  },
+  {
+    id: "desserts",
+    title: { fr: "Desserts", en: "Desserts" },
+    subtitle: {
+      fr: "Faits maison, servis jusqu’au dernier service.",
+      en: "Made in-house, served until the last service.",
+    },
+    dishes: [
+      {
+        id: "salade-fruits",
+        name: { fr: "Salade de fruits frais de saison", en: "Seasonal fresh fruit salad" },
+        description: {
+          fr: "Jus de citron vert, vanille, fleur de miel.",
+          en: "Lime juice, vanilla, honey.",
+        },
+        price: 3500,
+        tag: { fr: "Menu Rose", en: "Pink Menu" },
+      },
+      {
+        id: "fondant-chocolat",
+        name: { fr: "Fondant au chocolat", en: "Chocolate fondant" },
+        description: { fr: "Glace vanille.", en: "Vanilla ice cream." },
+        price: 4000,
+      },
+      {
+        id: "cafe-gourmand",
+        name: { fr: "Café gourmand", en: "Coffee & petits fours" },
+        description: { fr: "Trois mignardises du jour.", en: "Three treats of the day." },
+        price: 4500,
+      },
+    ],
+  },
+  {
+    id: "boissons",
+    title: { fr: "Boissons", en: "Drinks" },
+    subtitle: {
+      fr: "Jus maison, boissons fraîches et cave courte.",
+      en: "House juices, soft drinks and a short wine list.",
+    },
+    dishes: [
+      { id: "bissap", name: { fr: "Jus de bissap", en: "Bissap juice" }, price: 1500 },
+      { id: "gingembre", name: { fr: "Jus de gingembre", en: "Ginger juice" }, price: 1500 },
+      { id: "eau", name: { fr: "Eau minérale 50 cl", en: "Mineral water 50 cl" }, price: 1000 },
+      { id: "cafe-the", name: { fr: "Café ou thé", en: "Coffee or tea" }, price: 1200 },
+      { id: "vin", name: { fr: "Verre de vin", en: "Glass of wine" }, price: 3000 },
+    ],
+  },
+];
+
+export const MENU_ROSE = {
+  dates: {
+    fr: "Du 1er au 31 octobre 2026",
+    en: "1–31 October 2026",
+  },
+  quote: {
+    fr: "« Même lorsque le chemin est difficile, chaque pas en avant est une victoire. »",
+    en: "“Even when the road is hard, every step forward is a victory.”",
+  },
+  entree: {
+    name: {
+      fr: "Salade tiède de lentilles et fromage frais aux herbes",
+      en: "Warm lentil salad with herb cream cheese",
+    },
+    description: {
+      fr: "Lentilles fondantes, fromage frais aux herbes, noix torréfiées et vinaigrette citronnée.",
+      en: "Soft lentils, herb cream cheese, toasted walnuts and lemon dressing.",
+    },
+  },
+  plat: {
+    name: {
+      fr: "Rognons de veau à la moutarde à l’ancienne",
+      en: "Veal kidneys with wholegrain mustard",
+    },
+    description: {
+      fr: "Pommes de terre sautées à l’ail et haricots verts.",
+      en: "Garlic potatoes and green beans.",
+    },
+  },
+  dessert: {
+    name: {
+      fr: "Salade de fruits frais de saison",
+      en: "Seasonal fresh fruit salad",
+    },
+    description: {
+      fr: "Fruits frais, jus de citron vert, vanille et fleur de miel.",
+      en: "Fresh fruit, lime juice, vanilla and honey.",
+    },
+  },
+  formulas: [
+    {
+      price: "15 000",
+      label: "FCFA",
+      featured: false,
+      detail: {
+        fr: "Entrée + plat ou plat + dessert",
+        en: "Starter + main or main + dessert",
+      },
+    },
+    {
+      price: "18 000",
+      label: "FCFA",
+      featured: true,
+      detail: {
+        fr: "Menu complet, verre de vin, eau et café",
+        en: "Full menu, glass of wine, water and coffee",
+      },
+    },
+  ],
+};

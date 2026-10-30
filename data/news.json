@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "terrasse-saison-seche",
+    "title": "La terrasse, notre plus belle table",
+    "date": "2026-10-12",
+    "category": "La maison",
+    "excerpt": "À l’ombre, face au Musée Boganda : la terrasse reste ouverte toute la journée, du café au dernier service.",
+    "image": "/images/terrace.jpg",
+    "imageAlt": "Tables dressées sur la terrasse du Restaurant M’",
+    "body": [
+      "La saison sèche s’installe et la terrasse redevient le cœur de la maison. Les tables y sont dressées dès l’ouverture, à l’abri des ombrières, et le service y reste continu jusqu’au soir.",
+      "C’est la place idéale pour un déjeuner qui s’étire, un café en fin d’après-midi ou un dîner à plusieurs. Les jours de forte affluence, nous conseillons de réserver en précisant que vous souhaitez être dehors.",
+      "La terrasse reste accessible selon la météo. En cas de pluie, nous installons les mêmes tables en salle, sans changer la carte ni le service.",
+      "Pour réserver : un message WhatsApp au +236 72 05 34 34 ou un appel, en indiquant le nombre de personnes et l’heure souhaitée."
+    ]
+  },
+  {
+    "slug": "pizzas-a-emporter",
+    "title": "Pizzas à emporter : commandez sur WhatsApp",
+    "date": "2026-10-03",
+    "category": "À emporter",
+    "excerpt": "Pâte pétrie sur place, cuisson à la commande : vos pizzas sont prêtes en quelques messages.",
+    "image": "/images/plates.jpg",
+    "imageAlt": "Assiettes de la maison vues du dessus",
+    "body": [
+      "La pizzéria tourne tous les jours, midi et soir. Les pâtes sont pétries sur place et les pizzas cuites à la commande : elles partent donc chaudes, jamais à l’avance.",
+      "Pour commander, écrivez sur WhatsApp en précisant vos pizzas, le nombre de personnes et l’heure de retrait. Nous confirmons la disponibilité et le total avant de lancer la préparation.",
+      "La carte démarre à 6 000 FCFA pour une margherita ; comptez 7 000 à 7 500 FCFA pour les pizzas garnies. Les plats de la carte peuvent aussi être emportés.",
+      "Les commandes de groupe sont possibles : prévenez-nous une heure à l’avance pour que tout soit prêt à l’arrivée."
+    ]
+  },
+  {
+    "slug": "menu-rose-2026",
+    "title": "Le Menu Rose revient pour Octobre rose",
+    "date": "2026-10-01",
+    "category": "Octobre rose",
+    "excerpt": "Trois services de saison, deux formules et une table solidaire : le Menu Rose est servi tout le mois d’octobre.",
+    "image": "/images/salmon.jpg",
+    "imageAlt": "Saumon snacké et légumes verts",
+    "body": [
+      "Comme chaque année, octobre est rose à la maison. Notre chef a composé un menu en trois services, directement issu de la carte de saison.",
+      "En entrée, une salade tiède de lentilles et fromage frais aux herbes, noix torréfiées et vinaigrette citronnée. En plat, des rognons de veau à la moutarde à l’ancienne, pommes de terre sautées à l’ail et haricots verts. En dessert, une salade de fruits frais de saison, citron vert, vanille et fleur de miel.",
+      "Deux formules sont proposées : entrée + plat ou plat + dessert à 15 000 FCFA, et le menu complet avec verre de vin, eau et café à 18 000 FCFA.",
+      "Le Menu Rose est servi midi et soir jusqu’au 31 octobre, sur réservation conseillée. Précisez le menu à l’arrivée, et signalez-nous toute allergie ou régime particulier."
+    ]
+  },
+  {
+    "slug": "carte-automne",
+    "title": "La carte d’automne est arrivée",
+    "date": "2026-09-20",
+    "category": "La carte",
+    "excerpt": "Nouveaux plats mijotés, grillades au feu de bois et desserts de saison : la carte a changé.",
+    "image": "/images/steak.jpg",
+    "imageAlt": "Pièce de bœuf grillée et frites maison",
+    "body": [
+      "La nouvelle carte est en place. Elle garde les classiques de la maison — travers de porc laqués, saumon snacké, pizzas pétries sur place — et accueille quelques plats mijotés supplémentaires.",
+      "Les entrées suivent le marché : lentilles, avocat, plantain et courge selon les arrivages. Les grillades restent cuites au feu de bois, à la commande.",
+      "Les prix n’ont pas changé sur les plats signatures. La carte complète est disponible sur place et sur la page dédiée de ce site.",
+      "Une allergie ou un régime particulier ? Dites-le nous en salle ou par WhatsApp : nous adaptons la plupart des assiettes."
+    ]
+  }
+]

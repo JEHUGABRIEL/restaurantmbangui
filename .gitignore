@@ -1,0 +1,21 @@
+# Dépendances et sorties de build
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# Vercel
+.vercel/
+
+# Variables d'environnement
+.env
+.env.*
+!.env.example
+
+# Données du back-office : contenu public uniquement.
+# Les fichiers de réservations, messages, comptes et journal contiennent
+# des données personnelles et restent hors du dépôt.
+data/*
+!data/menu.json
+!data/news.json
